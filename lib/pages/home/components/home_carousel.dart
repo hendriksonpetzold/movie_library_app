@@ -14,14 +14,19 @@ class HomeCarousel extends GetView<HomeController> {
       child: CarouselSlider.builder(
         itemCount: controller.movieList.length,
         options: CarouselOptions(
+          autoPlay: true,
+          enlargeCenterPage: true,
           height: MediaQuery.of(context).size.height * .4,
         ),
         itemBuilder: (context, index, realIndex) {
           final list = controller.movieList[index];
-          return MovieCard(
-            title: list.title,
-            grade: list.grade.toString(),
-            image: list.posterPath,
+          return InkWell(
+            onTap: () {},
+            child: MovieCard(
+              title: list.title,
+              grade: list.grade.toString(),
+              image: list.posterPath,
+            ),
           );
         },
       ),

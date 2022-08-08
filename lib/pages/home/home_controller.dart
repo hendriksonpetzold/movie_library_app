@@ -6,15 +6,31 @@ import 'package:movie_streaming_app/repository/movie_repository.dart';
 
 class HomeController extends GetxController {
   final TextEditingController searchEditingController = TextEditingController();
+  RxString searchText = RxString('');
   final MovieRepository repository = MovieRepository();
   List<MovieModel> movieList = [];
+  RxList<MovieModel> searchList = RxList([]);
   RxString carouselTitle = RxString('Best action movies');
   final Rx<MovieListEnum> _activeList = Rx<MovieListEnum>(MovieListEnum.action);
   MovieListEnum get activeList => _activeList.value;
 
+  @override
+  onInit() {
+    searchList.value = movieList;
+    super.onInit();
+  }
+
   Future<void> fetchMovies() async {
     final result = await repository.findAll();
+
     movieList = result;
+  }
+
+  void movieSearch() {
+    List<MovieModel> newList = movieList
+        .where((item) => item.title.contains(searchEditingController.text))
+        .toList();
+    searchList.value = newList;
   }
 
   void changeList({required MovieListEnum list}) {

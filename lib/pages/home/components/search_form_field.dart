@@ -30,9 +30,15 @@ class SearchFormField extends GetView<HomeController> {
           ),
           Expanded(
             child: TextFormField(
+              style: const TextStyle(color: Colors.white),
               cursorColor: Colors.white,
               controller: controller.searchEditingController,
-              onChanged: (value) {},
+              onChanged: (value) {
+                controller.searchText.value =
+                    controller.searchEditingController.text;
+
+                controller.movieSearch();
+              },
               decoration: const InputDecoration(
                 hintText: 'Search by movie name',
                 isDense: true,

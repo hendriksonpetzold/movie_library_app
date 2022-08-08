@@ -21,10 +21,11 @@ class MovieCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         image: DecorationImage(
-            image: NetworkImage(
-              'https://image.tmdb.org/t/p/w220_and_h330_face$image',
-            ),
-            fit: BoxFit.cover),
+          image: NetworkImage(
+            'https://image.tmdb.org/t/p/w220_and_h330_face$image',
+          ),
+          fit: BoxFit.fill,
+        ),
       ),
       child: Column(
         children: [

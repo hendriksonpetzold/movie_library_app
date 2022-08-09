@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_streaming_app/pages/home/components/custom_app_bar.dart';
-import 'package:movie_streaming_app/pages/home/components/custom_botton_navigation_bar.dart';
+import 'package:movie_streaming_app/pages/home/components/home_custom_app_bar.dart';
+import 'package:movie_streaming_app/pages/home/components/home_custom_botton_navigation_bar.dart';
 import 'package:movie_streaming_app/pages/home/components/home_carousel.dart';
 
-import 'package:movie_streaming_app/pages/home/components/search_form_field.dart';
-import 'package:movie_streaming_app/pages/home/components/search_movie_list_view.dart';
-import 'package:movie_streaming_app/pages/home/components/select_movie_type_bar.dart';
+import 'package:movie_streaming_app/pages/home/components/home_search_form_field.dart';
+import 'package:movie_streaming_app/pages/home/components/home_search_movie_list_view.dart';
+import 'package:movie_streaming_app/pages/home/components/home_select_movie_type_bar.dart';
 import 'package:movie_streaming_app/pages/home/home_controller.dart';
 
 import 'package:movie_streaming_app/style/app_colors.dart';
@@ -39,15 +39,15 @@ class HomePage extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).padding.top,
                     ),
-                    const CustomAppBar(),
+                    const HomeCustomAppBar(),
                     const SizedBox(
                       height: 8,
                     ),
-                    const SearchFormField(),
+                    const HomeSearchFormField(),
                     const SizedBox(
                       height: 16,
                     ),
-                    const SelectMovieTypeBar(),
+                    const HomeSelectMovieTypeBar(),
                     const SizedBox(
                       height: 40,
                     ),
@@ -77,7 +77,7 @@ class HomePage extends StatelessWidget {
                       return Visibility(
                         visible: controller.isCarouselVisible.value,
                         replacement: const Align(
-                          child: SearchMovieListView(),
+                          child: HomeSearchMovieListView(),
                         ),
                         child: const HomeCarousel(),
                       );
@@ -98,7 +98,7 @@ class HomePage extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const CustomBottonNavigationBar(),
+              const HomeCustomBottonNavigationBar(),
             ],
           ),
         ),

@@ -11,24 +11,26 @@ class HomeController extends GetxController {
 
   RxInt genre = RxInt(28);
   final MovieRepository repository = MovieRepository();
-  //!mudar o nome das listas
+
   List<MovieModel> movie = [];
   RxList<MovieModel> movieGenre = RxList([]);
   RxList<MovieModel> movieSearch = RxList([]);
-  RxString carouselTitle = RxString('Best action movies');
+  RxString carouselTitle = RxString('All movies');
   final Rx<MovieListEnum> _activeList = Rx<MovieListEnum>(MovieListEnum.all);
   MovieListEnum get activeList => _activeList.value;
   @override
   onInit() async {
     await fetchMovies();
+    getListByGenre();
+    movieGenre.value = movie;
     movieSearch.value = movie;
     super.onInit();
   }
 
   Future<void> fetchMovies() async {
     final result = await repository.findAll();
-    movieGenre.value = result;
     movie = result;
+    await fetchMoviesByGenre();
   }
 
   Future<void> fetchMoviesByGenre() async {

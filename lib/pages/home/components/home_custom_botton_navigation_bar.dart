@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movie_streaming_app/style/app_colors.dart';
 
-class CustomBottonNavigationBar extends StatelessWidget {
-  const CustomBottonNavigationBar({Key? key}) : super(key: key);
+class HomeCustomBottonNavigationBar extends StatelessWidget {
+  const HomeCustomBottonNavigationBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

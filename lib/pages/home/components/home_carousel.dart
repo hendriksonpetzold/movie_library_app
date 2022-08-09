@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_streaming_app/pages/home/components/movie_card.dart';
+import 'package:movie_streaming_app/pages/home/components/home_movie_card.dart';
 import 'package:movie_streaming_app/pages/home/home_controller.dart';
 
 class HomeCarousel extends GetView<HomeController> {
@@ -23,7 +23,7 @@ class HomeCarousel extends GetView<HomeController> {
             final list = controller.movieGenre[index];
             return InkWell(
               onTap: () {},
-              child: MovieCard(
+              child: HomeMovieCard(
                 title: list.title,
                 grade: list.grade.toString(),
                 image: list.posterPath,

@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:movie_streaming_app/pages/home/home_controller.dart';
 import 'package:movie_streaming_app/style/app_colors.dart';
 
-class SearchFormField extends GetView<HomeController> {
-  const SearchFormField({Key? key}) : super(key: key);
+class HomeSearchFormField extends GetView<HomeController> {
+  const HomeSearchFormField({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class SearchFormField extends GetView<HomeController> {
               cursorColor: Colors.white,
               controller: controller.searchEditingController,
               onChanged: (value) {
-                controller.movieSearch();
+                controller.searchMovie();
                 if (controller.searchEditingController.text == '') {
                   controller.isCarouselVisible.value = true;
                 } else {

@@ -4,8 +4,8 @@ import 'package:movie_streaming_app/components/app_button.dart';
 import 'package:movie_streaming_app/enums/movie_list_enum.dart';
 import 'package:movie_streaming_app/pages/home/home_controller.dart';
 
-class SelectMovieTypeBar extends GetView<HomeController> {
-  const SelectMovieTypeBar({Key? key}) : super(key: key);
+class HomeSelectMovieTypeBar extends GetView<HomeController> {
+  const HomeSelectMovieTypeBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

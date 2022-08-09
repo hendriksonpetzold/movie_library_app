@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:movie_streaming_app/components/favorite_button.dart';
 import 'package:movie_streaming_app/style/app_images.dart';
 
-class MovieCard extends StatelessWidget {
+class HomeMovieCard extends StatelessWidget {
   final String title;
   final String grade;
   final String image;
-  const MovieCard({
+  const HomeMovieCard({
     Key? key,
     required this.title,
     required this.grade,

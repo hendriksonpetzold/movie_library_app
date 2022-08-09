@@ -73,14 +73,15 @@ class HomePage extends StatelessWidget {
                 future: controller.fetchMovies(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
-                    return Stack(
-                      children: const [
-                        HomeCarousel(),
-                        Align(
+                    return Obx(() {
+                      return Visibility(
+                        visible: controller.isCarouselVisible.value,
+                        replacement: const Align(
                           child: SearchMovieListView(),
                         ),
-                      ],
-                    );
+                        child: const HomeCarousel(),
+                      );
+                    });
                   } else if (snapshot.connectionState ==
                       ConnectionState.waiting) {
                     return SizedBox(

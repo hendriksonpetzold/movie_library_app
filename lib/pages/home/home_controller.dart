@@ -8,27 +8,27 @@ class HomeController extends GetxController {
   final TextEditingController searchEditingController = TextEditingController();
 
   RxBool isCarouselVisible = RxBool(true);
-  RxBool isSearchListVisible = RxBool(false);
+
   RxInt genre = RxInt(28);
   final MovieRepository repository = MovieRepository();
-  List<MovieModel> movieList = [];
-  List<MovieModel> actionList = [];
-  RxList<MovieModel> searchList = RxList([]);
+  //!mudar o nome das listas
+  List<MovieModel> movie = [];
+  RxList<MovieModel> movieGenre = RxList([]);
+  RxList<MovieModel> movieSearch = RxList([]);
   RxString carouselTitle = RxString('Best action movies');
   final Rx<MovieListEnum> _activeList = Rx<MovieListEnum>(MovieListEnum.all);
   MovieListEnum get activeList => _activeList.value;
-
   @override
-  onInit() {
-    fetchMovies();
-    searchList.value = movieList;
+  onInit() async {
+    await fetchMovies();
+    movieSearch.value = movie;
     super.onInit();
   }
 
   Future<void> fetchMovies() async {
     final result = await repository.findAll();
-
-    movieList = result;
+    movieGenre.value = result;
+    movie = result;
   }
 
   Future<void> fetchMoviesByGenre() async {
@@ -36,14 +36,14 @@ class HomeController extends GetxController {
     List<MovieModel> newList = result
         .where((element) => element.genreIds.contains(genre.value))
         .toList();
-    actionList = newList;
+    movieGenre.value = newList;
   }
 
-  void movieSearch() {
-    List<MovieModel> newList = movieList
+  void searchMovie() {
+    List<MovieModel> newList = movieGenre
         .where((item) => item.title.contains(searchEditingController.text))
         .toList();
-    searchList.value = newList;
+    movieSearch.value = newList;
   }
 
   void changeList({required MovieListEnum list}) {
@@ -57,6 +57,10 @@ class HomeController extends GetxController {
 
   void getListByGenre() {
     switch (_activeList.value) {
+      case MovieListEnum.all:
+        movieGenre.value = movie;
+        carouselTitle.value = 'All movies';
+        break;
       case MovieListEnum.action:
         genre.value = 28;
         fetchMoviesByGenre();

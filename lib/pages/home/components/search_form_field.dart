@@ -37,10 +37,8 @@ class SearchFormField extends GetView<HomeController> {
                 controller.movieSearch();
                 if (controller.searchEditingController.text == '') {
                   controller.isCarouselVisible.value = true;
-                  controller.isSearchListVisible.value = false;
                 } else {
                   controller.isCarouselVisible.value = false;
-                  controller.isSearchListVisible.value = true;
                 }
               },
               decoration: const InputDecoration(

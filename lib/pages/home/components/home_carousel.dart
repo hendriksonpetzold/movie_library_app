@@ -10,29 +10,26 @@ class HomeCarousel extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      return Visibility(
-        visible: controller.isCarouselVisible.value,
-        child: SizedBox(
-          width: double.infinity,
-          child: CarouselSlider.builder(
-            itemCount: controller.actionList.length,
-            options: CarouselOptions(
-              autoPlay: true,
-              enlargeCenterPage: true,
-              height: MediaQuery.of(context).size.height * .4,
-            ),
-            itemBuilder: (context, index, realIndex) {
-              final list = controller.actionList[index];
-              return InkWell(
-                onTap: () {},
-                child: MovieCard(
-                  title: list.title,
-                  grade: list.grade.toString(),
-                  image: list.posterPath,
-                ),
-              );
-            },
+      return SizedBox(
+        width: double.infinity,
+        child: CarouselSlider.builder(
+          itemCount: controller.movieGenre.length,
+          options: CarouselOptions(
+            autoPlay: true,
+            enlargeCenterPage: true,
+            height: MediaQuery.of(context).size.height * .4,
           ),
+          itemBuilder: (context, index, realIndex) {
+            final list = controller.movieGenre[index];
+            return InkWell(
+              onTap: () {},
+              child: MovieCard(
+                title: list.title,
+                grade: list.grade.toString(),
+                image: list.posterPath,
+              ),
+            );
+          },
         ),
       );
     });

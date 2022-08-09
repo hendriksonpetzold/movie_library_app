@@ -13,14 +13,26 @@ class SelectMovieTypeBar extends GetView<HomeController> {
       scrollDirection: Axis.horizontal,
       child: SizedBox(
         height: 40,
-        width: 940,
+        width: 1100,
         child: Obx(
           () {
             return Row(
               children: [
                 AppButton(
                   onTap: () {
+                    controller.changeList(list: MovieListEnum.all);
+                    controller.getListByGenre();
+                  },
+                  label: 'All',
+                  isSelected:
+                      controller.checkActiveList(list: MovieListEnum.all),
+                  height: 40,
+                  width: 140,
+                ),
+                AppButton(
+                  onTap: () {
                     controller.changeList(list: MovieListEnum.action);
+                    controller.getListByGenre();
                   },
                   label: 'Action',
                   isSelected:
@@ -31,6 +43,7 @@ class SelectMovieTypeBar extends GetView<HomeController> {
                 AppButton(
                   onTap: () {
                     controller.changeList(list: MovieListEnum.adventure);
+                    controller.getListByGenre();
                   },
                   label: 'Adventure',
                   isSelected:
@@ -41,6 +54,7 @@ class SelectMovieTypeBar extends GetView<HomeController> {
                 AppButton(
                   onTap: () {
                     controller.changeList(list: MovieListEnum.comedy);
+                    controller.getListByGenre();
                   },
                   label: 'Comedy',
                   isSelected:
@@ -51,6 +65,7 @@ class SelectMovieTypeBar extends GetView<HomeController> {
                 AppButton(
                   onTap: () {
                     controller.changeList(list: MovieListEnum.drama);
+                    controller.getListByGenre();
                   },
                   label: 'Drama',
                   isSelected:
@@ -61,6 +76,7 @@ class SelectMovieTypeBar extends GetView<HomeController> {
                 AppButton(
                   onTap: () {
                     controller.changeList(list: MovieListEnum.horror);
+                    controller.getListByGenre();
                   },
                   label: 'Horror',
                   isSelected:
@@ -71,6 +87,7 @@ class SelectMovieTypeBar extends GetView<HomeController> {
                 AppButton(
                   onTap: () {
                     controller.changeList(list: MovieListEnum.romance);
+                    controller.getListByGenre();
                   },
                   label: 'Romannce',
                   isSelected:

@@ -18,26 +18,11 @@ class CustomBottonNavigationBar extends StatelessWidget {
         ),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: const [
           Icon(
             Icons.home,
             color: AppColors.accentColor,
-            size: 26,
-          ),
-          Icon(
-            Icons.favorite_outline,
-            color: AppColors.unSelectedIconColor,
-            size: 26,
-          ),
-          Icon(
-            Icons.chat,
-            color: AppColors.unSelectedIconColor,
-            size: 26,
-          ),
-          Icon(
-            Icons.person,
-            color: AppColors.unSelectedIconColor,
             size: 26,
           ),
         ],

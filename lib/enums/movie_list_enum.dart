@@ -1,4 +1,5 @@
 enum MovieListEnum {
+  all,
   comedy,
   horror,
   action,

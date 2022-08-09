@@ -34,10 +34,14 @@ class SearchFormField extends GetView<HomeController> {
               cursorColor: Colors.white,
               controller: controller.searchEditingController,
               onChanged: (value) {
-                controller.searchText.value =
-                    controller.searchEditingController.text;
-
                 controller.movieSearch();
+                if (controller.searchEditingController.text == '') {
+                  controller.isCarouselVisible.value = true;
+                  controller.isSearchListVisible.value = false;
+                } else {
+                  controller.isCarouselVisible.value = false;
+                  controller.isSearchListVisible.value = true;
+                }
               },
               decoration: const InputDecoration(
                 hintText: 'Search by movie name',

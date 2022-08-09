@@ -72,9 +72,15 @@ class HomePage extends StatelessWidget {
               FutureBuilder(
                 future: controller.fetchMovies(),
                 builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done &&
-                      controller.searchText.value == '') {
-                    return const HomeCarousel();
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    return Stack(
+                      children: const [
+                        HomeCarousel(),
+                        Align(
+                          child: SearchMovieListView(),
+                        ),
+                      ],
+                    );
                   } else if (snapshot.connectionState ==
                       ConnectionState.waiting) {
                     return SizedBox(
@@ -83,10 +89,8 @@ class HomePage extends StatelessWidget {
                         child: CircularProgressIndicator(),
                       ),
                     );
-                  } else if (snapshot.connectionState == ConnectionState.done &&
-                      controller.searchText.value != '') {
-                    return const SearchMovieListView();
                   }
+
                   return Container();
                 },
               ),

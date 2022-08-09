@@ -6,16 +6,21 @@ import 'package:movie_streaming_app/repository/movie_repository.dart';
 
 class HomeController extends GetxController {
   final TextEditingController searchEditingController = TextEditingController();
-  RxString searchText = RxString('');
+
+  RxBool isCarouselVisible = RxBool(true);
+  RxBool isSearchListVisible = RxBool(false);
+  RxInt genre = RxInt(28);
   final MovieRepository repository = MovieRepository();
   List<MovieModel> movieList = [];
+  List<MovieModel> actionList = [];
   RxList<MovieModel> searchList = RxList([]);
   RxString carouselTitle = RxString('Best action movies');
-  final Rx<MovieListEnum> _activeList = Rx<MovieListEnum>(MovieListEnum.action);
+  final Rx<MovieListEnum> _activeList = Rx<MovieListEnum>(MovieListEnum.all);
   MovieListEnum get activeList => _activeList.value;
 
   @override
   onInit() {
+    fetchMovies();
     searchList.value = movieList;
     super.onInit();
   }
@@ -24,6 +29,14 @@ class HomeController extends GetxController {
     final result = await repository.findAll();
 
     movieList = result;
+  }
+
+  Future<void> fetchMoviesByGenre() async {
+    final result = await repository.findAll();
+    List<MovieModel> newList = result
+        .where((element) => element.genreIds.contains(genre.value))
+        .toList();
+    actionList = newList;
   }
 
   void movieSearch() {
@@ -42,33 +55,44 @@ class HomeController extends GetxController {
     return Rx<bool>(false);
   }
 
-  int getListIndex() {
+  void getListByGenre() {
     switch (_activeList.value) {
       case MovieListEnum.action:
+        genre.value = 28;
+        fetchMoviesByGenre();
         carouselTitle.value = 'Best action movies';
-        return 0;
+        break;
 
       case MovieListEnum.adventure:
+        genre.value = 12;
+        fetchMoviesByGenre();
         carouselTitle.value = 'Best adventure movies';
-        return 1;
+        break;
 
       case MovieListEnum.comedy:
+        genre.value = 35;
+        fetchMoviesByGenre();
         carouselTitle.value = 'Best comedy movies';
-        return 2;
+        break;
 
       case MovieListEnum.drama:
+        genre.value = 18;
+        fetchMoviesByGenre();
         carouselTitle.value = 'Best drama movies';
-        return 3;
+        break;
 
       case MovieListEnum.horror:
+        genre.value = 27;
+        fetchMoviesByGenre();
         carouselTitle.value = 'Best horror movies';
-        return 4;
+        break;
 
       case MovieListEnum.romance:
+        genre.value = 10749;
+        fetchMoviesByGenre();
         carouselTitle.value = 'Best romance movies';
-        return 5;
+        break;
       default:
-        return 0;
     }
   }
 }

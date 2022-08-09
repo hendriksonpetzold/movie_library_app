@@ -10,30 +10,33 @@ class SearchMovieListView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      return SizedBox(
-        height: MediaQuery.of(context).size.height * .5,
-        width: 300,
-        child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: controller.searchList.length,
-          itemBuilder: (context, index) {
-            final list = controller.searchList[index];
-            return Column(
-              children: [
-                InkWell(
-                  onTap: () {},
-                  child: MovieCard(
-                    title: list.title,
-                    grade: list.grade.toString(),
-                    image: list.posterPath,
+      return Visibility(
+        visible: controller.isSearchListVisible.value,
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height * .5,
+          width: 300,
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: controller.searchList.length,
+            itemBuilder: (context, index) {
+              final list = controller.searchList[index];
+              return Column(
+                children: [
+                  InkWell(
+                    onTap: () {},
+                    child: MovieCard(
+                      title: list.title,
+                      grade: list.grade.toString(),
+                      image: list.posterPath,
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-              ],
-            );
-          },
+                  const SizedBox(
+                    height: 16,
+                  ),
+                ],
+              );
+            },
+          ),
         ),
       );
     });

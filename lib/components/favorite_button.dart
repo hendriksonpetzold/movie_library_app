@@ -9,30 +9,33 @@ class FavoriteButton extends StatelessWidget {
   Widget build(BuildContext context) {
     RxBool isFavorite = RxBool(false);
 
-    return InkWell(
-      onTap: () {
-        isFavorite.value = !isFavorite.value;
-      },
-      child: Obx(
-        () {
-          return Container(
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: const Color(0XFF333436),
-            ),
-            child: isFavorite.value
-                ? const Icon(
-                    Icons.favorite,
-                    color: AppColors.redAccent,
-                  )
-                : const Icon(
-                    Icons.favorite,
-                    color: Colors.white,
-                  ),
-          );
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () {
+          isFavorite.value = !isFavorite.value;
         },
+        child: Obx(
+          () {
+            return Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: const Color(0XFF333436),
+              ),
+              child: isFavorite.value
+                  ? const Icon(
+                      Icons.favorite,
+                      color: AppColors.redAccent,
+                    )
+                  : const Icon(
+                      Icons.favorite,
+                      color: Colors.white,
+                    ),
+            );
+          },
+        ),
       ),
     );
   }

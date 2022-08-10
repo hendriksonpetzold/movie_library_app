@@ -6,4 +6,5 @@ class MovieDetailController extends GetxController {
   String movieOverview = Get.arguments['movieOverview'];
   String releaseDate = Get.arguments['releaseDate'];
   double grade = Get.arguments['grade'];
+  String tag = Get.arguments['tag'];
 }

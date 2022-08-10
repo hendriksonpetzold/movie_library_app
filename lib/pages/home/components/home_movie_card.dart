@@ -47,42 +47,45 @@ class HomeMovieCard extends StatelessWidget {
                 bottomRight: Radius.circular(20),
               ),
             ),
-            child: Row(
-              children: [
-                SizedBox(
-                  height: 60,
-                  width: 200,
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      title,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+            child: Material(
+              color: Colors.transparent,
+              child: Row(
+                children: [
+                  SizedBox(
+                    height: 60,
+                    width: 200,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        title,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.start,
                       ),
-                      textAlign: TextAlign.start,
                     ),
                   ),
-                ),
-                Expanded(child: Container()),
-                SizedBox(
-                  height: 20,
-                  width: 20,
-                  child: Image(
-                    image: AssetImage(AppImages.star),
+                  Expanded(child: Container()),
+                  SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: Image(
+                      image: AssetImage(AppImages.star),
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  width: 8,
-                ),
-                Text(
-                  grade,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+                  const SizedBox(
+                    width: 8,
                   ),
-                ),
-              ],
+                  Text(
+                    grade,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
             ),
           )
         ],

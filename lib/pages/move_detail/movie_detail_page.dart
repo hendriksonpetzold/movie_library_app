@@ -14,28 +14,31 @@ class MovieDetailPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height * .5,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(
-                  'https://image.tmdb.org/t/p/w220_and_h330_face${controller.movieImage}',
+          Hero(
+            tag: controller.tag,
+            child: Container(
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height * .5,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                    'https://image.tmdb.org/t/p/w220_and_h330_face${controller.movieImage}',
+                  ),
+                  fit: BoxFit.fill,
                 ),
-                fit: BoxFit.fill,
               ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 16, top: 60, right: 16),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomBackButton(onTap: () {
-                    Get.back();
-                  }),
-                  Expanded(child: Container()),
-                  const FavoriteButton(),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.only(left: 16, top: 60, right: 16),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomBackButton(onTap: () {
+                      Get.back();
+                    }),
+                    Expanded(child: Container()),
+                    const FavoriteButton(),
+                  ],
+                ),
               ),
             ),
           ),

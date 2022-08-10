@@ -31,12 +31,12 @@ class HomeCarousel extends GetView<HomeController> {
                     'movieOverview': list.description,
                     'releaseDate': list.releaseDate,
                     'grade': list.grade,
-                    'tag': 'carousel$index',
+                    'tag': 'carousel$realIndex',
                   },
                 );
               },
               child: Hero(
-                tag: 'carousel$index',
+                tag: 'carousel$realIndex',
                 child: HomeMovieCard(
                   title: list.title,
                   grade: list.grade.toString(),

@@ -23,4 +23,12 @@ class AppColors {
     AppColors.primaryColorLight,
     AppColors.accentColorLight,
   ];
+
+  static final List<Color> movieDetailGradient = [
+    Colors.transparent,
+    AppColors.primaryColor.withOpacity(0.8),
+    AppColors.primaryColor,
+    AppColors.primaryColorLight,
+    AppColors.lightBackGroundColor,
+  ];
 }

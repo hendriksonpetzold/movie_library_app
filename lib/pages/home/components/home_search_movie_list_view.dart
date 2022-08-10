@@ -22,7 +22,18 @@ class HomeSearchMovieListView extends GetView<HomeController> {
             return Column(
               children: [
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(
+                      '/movie_detail_page',
+                      arguments: {
+                        'movieImage': list.posterPath,
+                        'movieTitle': list.title,
+                        'movieOverview': list.description,
+                        'releaseDate': list.releaseDate,
+                        'grade': list.grade,
+                      },
+                    );
+                  },
                   child: HomeMovieCard(
                     title: list.title,
                     grade: list.grade.toString(),

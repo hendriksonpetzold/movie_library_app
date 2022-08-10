@@ -22,7 +22,18 @@ class HomeCarousel extends GetView<HomeController> {
           itemBuilder: (context, index, realIndex) {
             final list = controller.movieGenre[index];
             return InkWell(
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(
+                  '/movie_detail_page',
+                  arguments: {
+                    'movieImage': list.posterPath,
+                    'movieTitle': list.title,
+                    'movieOverview': list.description,
+                    'releaseDate': list.releaseDate,
+                    'grade': list.grade,
+                  },
+                );
+              },
               child: HomeMovieCard(
                 title: list.title,
                 grade: list.grade.toString(),

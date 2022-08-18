@@ -6,7 +6,9 @@
   <img width="300" height="600" src="assets/to_readme/movie_library_gif.gif" >
 </p>
 
-## Inspiration: https://dribbble.com/shots/16067191-Skyfly-mobile-app-design/attachments/7914098?mode=media
+## Inspiration: https://dribbble.com/shots/17634787-Event-App
+
+## API: https://api.themoviedb.org/3/movie/popular?api_key=ca72357c358861d55696a6d8da747b13&language=en-US&page=1
 
 ## Getting Started
 
